@@ -1,0 +1,43 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-icon {
+    margin-left: -32px; /* Adjust the position of the icon */
+    cursor: pointer;
+}
+
+input[type="text"] {
+    flex: 1; /* Make the input field take remaining space */
+    width: 100%; /* Set width to 100% */
+    border: none; /* Remove border to adjust width properly */
+    outline: none; /* Remove outline */
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        display: block;
+    }
+
+    .navbar {
+        flex-direction: column;
+    }
+
+    .search-container {
+        margin-top: 16px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* .search-icon {
+        margin-left: 2px;
+        margin-right: 8px;
+    }*/
+}

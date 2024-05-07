@@ -1,41 +1,55 @@
-
-
-import React, { useState } from 'react'
-import './App.css'
-import  NavBar  from './Component/Navbar'
-import Quote from './Component/Quote'
-import axios from 'axios'
+import React, { useState } from "react";
+import "./App.css";
+import NavBar from "./Component/Navbar";
+import Quote from "./Component/Quote";
+import axios from "axios";
+import Author from "./Component/Author";
 
 function App() {
   const [authorQuotes, setAuthorQuotes] = useState([]);
+  const [selectedAuthor, setSelectedAuthor] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleSearch = async (searchTerm) => {
+    setLoading(true);
+    setError(null);
     try {
-      const response = await axios.get(`http://localhost:5000/api/quotes/author/${searchTerm}`);
+      const response = await axios.get(
+        `http://localhost:5000/api/quotes/by-author?author=${searchTerm}`
+      );
       setAuthorQuotes(response.data);
+      setSelectedAuthor(searchTerm);
     } catch (error) {
-      console.error('Error searching for quotes:', error);
+      console.error("Error searching for quotes:", error);
+      setError(
+        "An error occurred while searching for quotes. Please try again."
+      );
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <>
-     <NavBar onSearch={handleSearch}/>
-     {authorQuotes.length > 0 ? (
-       <div className="container mx-auto mt-8">
-         <h1 className="text-3xl font-bold mb-4">Quotes by {authorQuotes[0].author}</h1>
-         {authorQuotes.map((quote, index) => (
-           <div key={index} className="bg-gray-100 p-4 rounded-md shadow-md mb-4">
-             <p className="text-lg">"{quote.quote}"</p>
-             <p className="text-lg">- {quote.author}</p>
-           </div>
-         ))}
-       </div>
-     ) : (
-       <Quote />
-     )}
+      <NavBar onSearch={handleSearch} />
+      {loading && (
+        <div className="flex justify-center items-center h-screen">
+          <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
+        </div>
+      )}
+      {error && <div>Error: {error}</div>}
+      {!loading && !error && (
+        <>
+          {selectedAuthor ? (
+            <Author author={selectedAuthor} quotes={authorQuotes} />
+          ) : (
+            <Quote />
+          )}
+        </>
+      )}
     </>
-  )
+  );
 }
 
-export default App
+export default App;

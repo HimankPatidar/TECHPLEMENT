@@ -1,0 +1,57 @@
+.containerQuote {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    background-image: url('../assets/peter-nguyen-OpiZAxueRUE-unsplash.jpg'); 
+    background-size: cover;
+    background-position: center;
+}
+
+.quote-card {
+    background-color: rgba(255, 255, 255, 0.8); 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 600px; 
+    backdrop-filter: blur(5px); 
+}
+
+
+
+.quote-heading {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #4a5568;
+}
+
+.quote-content {
+    margin-bottom: 20px;
+}
+
+.quote-text {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-family: 'Roboto', sans-serif; 
+}
+
+.author-name {
+    font-size: 16px;
+    color: #718096;
+}
+
+.random-button {
+    background-color: #4299e1;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.random-button:hover {
+    background-color: #3182ce;
+}

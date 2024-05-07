@@ -1,7 +1,9 @@
 
 
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './Quote.css'; // Import custom CSS file for styling
 
 function Quote() {
     const [quote, setQuote] = useState({});
@@ -41,18 +43,15 @@ function Quote() {
     };
 
     return (
-        <div className="container mx-auto mt-8">
-            <h1 className="text-3xl font-bold mb-4">{randomMode ? 'Random Quote' : 'Quote of the Day'}</h1>
-            <div className="bg-gray-100 p-4 rounded-md shadow-md mb-4">
-                <p className="text-lg">"{quote.quote}"</p>
-                <p className="text-lg">- {quote.author}</p>
+        <div className="containerQuote">
+            <div className="quote-card">
+                <h1 className="quote-heading">{randomMode ? 'Random Quote' : 'Quote of the Day'}</h1>
+                <div className="quote-content">
+                    <p className="quote-text">"{quote.quote}"</p>
+                    <p className="author-name">- {quote.author}</p>
+                </div>
+                <button className="random-button" onClick={fetchRandomQuote}>Random Quote</button>
             </div>
-            <button
-                className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
-                onClick={fetchRandomQuote}
-            >
-                Random Quote
-            </button>
         </div>
     );
 }
