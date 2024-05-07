@@ -23,10 +23,10 @@ To run this project locally, follow these steps:
    git clone https://github.com/your-username/techplement.git
 2. cd techplement
 3. npm install
-    # or
+     or
    yarn install
 4. npm start
-    # or
+     or
    yarn start
 
    
