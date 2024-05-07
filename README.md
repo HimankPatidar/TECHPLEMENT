@@ -36,6 +36,6 @@ To run this project locally, follow these steps:
 - Axios
 - Tailwind CSS
 - React Icons
-- Node.js (for backend API, if applicable)
+- Node.js 
 
 
